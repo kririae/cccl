@@ -577,6 +577,12 @@ class Configuration(object):
             self.config.available_features.add("nvrtc")
         if self.cxx.type == 'nvcc':
             self.cxx.compile_flags += ['--extended-lambda']
+        real_arch_format = '-gencode=arch=compute_{0},code=sm_{0}'
+        virt_arch_format = '-gencode=arch=compute_{0},code=compute_{0}'
+        if self.cxx.type == 'clang':
+            real_arch_format = '--cuda-gpu-arch=sm_{0}'
+            virt_arch_format = '--cuda-gpu-arch=compute_{0}'
+            self.cxx.compile_flags += ['-O1']
         pre_sm_32 = True
         pre_sm_60 = True
         pre_sm_70 = True
