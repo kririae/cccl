@@ -158,7 +158,7 @@ _LIBCUDACXX_INLINE_VISIBILITY
   __construct_at(_Tp* __location, _Args&&... __args)
 {
   _LIBCUDACXX_ASSERT(__location != nullptr, "null pointer given to construct_at");
-#if defined(__cuda_std__) && _LIBCUDACXX_STD_VER > 17
+#if _LIBCUDACXX_STD_VER > 17
   // Need to go through `std::construct_at` as that is the explicitly blessed function
   if (__libcpp_is_constant_evaluated())
   {
@@ -175,7 +175,7 @@ _LIBCUDACXX_INLINE_VISIBILITY
   __construct_at(_Tp* __location, _Args&&... __args)
 {
   _LIBCUDACXX_ASSERT(__location != nullptr, "null pointer given to construct_at");
-#if defined(__cuda_std__) && _LIBCUDACXX_STD_VER > 17
+#if _LIBCUDACXX_STD_VER > 17
   // Need to go through `std::construct_at` as that is the explicitly blessed function
   if (__libcpp_is_constant_evaluated())
   {
