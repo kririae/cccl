@@ -112,8 +112,11 @@ cudaError_t AliasTemporaries(
 /**
  * \brief Empty kernel for querying PTX manifest metadata (e.g., version) for the current device
  */
+namespace {
+// A anonymous namespace is required for OptiX linker to produce correct result.
 template <typename T>
 __global__ void EmptyKernel(void) { }
+}
 
 #endif  // DOXYGEN_SHOULD_SKIP_THIS
 
